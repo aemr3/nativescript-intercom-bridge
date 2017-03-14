@@ -2,7 +2,6 @@
 *.js.map
 *.log
 .DS_Store
-!scripts/*.js
 demo/app/*.js
 !demo/karma.conf.js
 !demo/app/tests/*.js
@@ -12,3 +11,4 @@ demo/lib
 demo/platforms
 demo/node_modules
 node_modules
+scripts
