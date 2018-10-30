@@ -1,5 +1,5 @@
-import * as application from 'application';
-import * as utils from 'utils/utils';
+import * as application from 'tns-core-modules/application';
+import * as utils from 'tns-core-modules/utils/utils';
 
 declare let io: any;
 
