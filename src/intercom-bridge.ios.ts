@@ -1,4 +1,5 @@
 declare var Intercom: any;
+declare var ICMUserAttributes: any;
 
 export class IntercomBridge {
   static init(apiKey: string, appId: string) {
@@ -33,7 +34,7 @@ export class IntercomBridge {
     Intercom.setHMACData(secureHash, secureData);
   }
 
-  static updateUser(attributes: any) {
+  static updateUser(attributes: object) {
     Intercom.updateUserWithAttributes(attributes);
   }
 

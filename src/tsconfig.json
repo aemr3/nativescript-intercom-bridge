@@ -8,9 +8,8 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "lib": [
-            "es2016"
+            "es6"
         ],
-        "sourceMap": true,
         "pretty": true,
         "allowUnreachableCode": false,
         "allowUnusedLabels": false,
@@ -20,21 +19,9 @@
         "noImplicitReturns": true,
         "noImplicitUseStrict": false,
         "noFallthroughCasesInSwitch": true,
-        "typeRoots": [
-            "./node_modules/@types",
-            "./node_modules"
-        ],
-        "types": [
-        ]
+        "skipLibCheck": true
     },
-    "files": [
-        "references.d.ts",
-        "intercom-bridge.common.ts",
-        "intercom-bridge.android.ts",
-        "intercom-bridge.ios.ts"
-    ],
     "exclude": [
-        "demo",
         "node_modules"
     ],
     "compileOnSave": false

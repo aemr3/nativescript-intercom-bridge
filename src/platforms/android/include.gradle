@@ -1,0 +1,8 @@
+//default elements
+android {
+
+}
+
+dependencies {
+    compile 'io.intercom.android:intercom-sdk-base:4.+'
+}
