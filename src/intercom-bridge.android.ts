@@ -2,10 +2,12 @@ import * as application from 'tns-core-modules/application';
 import * as utils from 'tns-core-modules/utils/utils';
 
 declare let io: any;
+const Intercom  = io.intercom.android.sdk.Intercom;
+
 
 export class IntercomBridge {
   static init(apiKey: string, appId: string) {
-    io.intercom.android.sdk.Intercom.initialize(utils.ad.getApplicationContext(), apiKey, appId);
+    Intercom.initialize(utils.ad.getApplicationContext(), apiKey, appId);
   }
 
   static registerIdentifiedUser(options: {userId?: string|number, email?: string}) {
@@ -23,66 +25,87 @@ export class IntercomBridge {
       registration.withEmail(options.email);
     }
 
-    io.intercom.android.sdk.Intercom.client().registerIdentifiedUser(registration);
+    Intercom.client().registerIdentifiedUser(registration);
   }
 
   static registerUnidentifiedUser() {
-    io.intercom.android.sdk.Intercom.client().registerUnidentifiedUser();
+    Intercom.client().registerUnidentifiedUser();
   }
 
   static reset() {
-    io.intercom.android.sdk.Intercom.client().reset();
+    Intercom.client().reset();
   }
 
   static setSecureMode(secureHash: string, secureData: string) {
-    io.intercom.android.sdk.Intercom.client().setSecureMode(secureHash, secureData);
+    Intercom.client().setSecureMode(secureHash, secureData);
   }
 
-  static updateUser(attributes: any) {
-    io.intercom.android.sdk.Intercom.client().updateUser(attributes);
+  static updateUser(attributes: object) {
+    const UserAttributes = io.intercom.android.sdk.UserAttributes;
+    var userAttrs = new UserAttributes.Builder();
+
+    Object.keys(attributes).forEach(function(key) {
+      const value = attributes[key];
+      switch (key) {
+        case "userId":
+          userAttrs = userAttrs.withUserId(value);
+          break;
+        case "name":
+          userAttrs = userAttrs.withName(value);
+          break;
+        case "email":
+          userAttrs = userAttrs.withEmail(value);
+          break;
+        default:
+          userAttrs = userAttrs.withCustomAttribute(key, value);
+      }
+    });
+    userAttrs = userAttrs.build();
+
+    Intercom.client().updateUser(userAttrs);
   }
 
   static logEvent(eventName: string, metaData?: any) {
     if (metaData && metaData.length) {
-        io.intercom.android.sdk.Intercom.client().logEvent(eventName, metaData);
+        Intercom.client().logEvent(eventName, metaData);
     } else {
-        io.intercom.android.sdk.Intercom.client().logEvent(eventName);
+        Intercom.client().logEvent(eventName);
     }
   }
 
   static displayMessenger() {
-    io.intercom.android.sdk.Intercom.client().displayMessenger();
+    Intercom.client().displayMessenger();
   }
 
   static displayMessageComposer() {
-    io.intercom.android.sdk.Intercom.client().displayMessageComposer();
+    Intercom.client().displayMessageComposer();
   }
 
   static displayMessageComposerWithInitialMessage(initialMessage: string) {
-    io.intercom.android.sdk.Intercom.client().displayMessageComposer(initialMessage);
+    Intercom.client().displayMessageComposer(initialMessage);
   }
 
   static displayConversationsList() {
-    io.intercom.android.sdk.Intercom.client().displayConversationsList();
+    Intercom.client().displayConversationsList();
   }
 
   static unreadConversationCount() {
-    return io.intercom.android.sdk.Intercom.client().getUnreadConversationCount();
+    return Intercom.client().getUnreadConversationCount();
   }
 
   static setLauncherVisibility(visible: boolean) {
-    io.intercom.android.sdk.Intercom.client().setLauncherVisibility(visible ? io.intercom.android.sdk.Intercom.VISIBLE : io.intercom.android.sdk.Intercom.GONE);
+    Intercom.client().setLauncherVisibility(visible ? Intercom.VISIBLE : Intercom.GONE);
   }
 
   static setInAppMessageVisibility(visible: boolean) {
-    io.intercom.android.sdk.Intercom.client().setInAppMessageVisibility(visible ? io.intercom.android.sdk.Intercom.VISIBLE : io.intercom.android.sdk.Intercom.GONE);
+    Intercom.client().setInAppMessageVisibility(visible ? Intercom.VISIBLE : Intercom.GONE);
   }
 
   static hideMessenger() {
-    io.intercom.android.sdk.Intercom.client().hideMessenger();
+    Intercom.client().hideMessenger();
   }
 
   static enableLogging() {
-    io.intercom.android.sdk.Intercom.setLogLevel(io.intercom.android.sdk.Intercom.LogLevel.DEBUG);
+    Intercom.setLogLevel(Intercom.LogLevel.DEBUG);
   }
 }
