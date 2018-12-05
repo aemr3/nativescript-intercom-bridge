@@ -8,5 +8,5 @@ android {
 }
 
 dependencies {
-    compile 'io.intercom.android:intercom-sdk-base:3.+'
+    compile 'io.intercom.android:intercom-sdk-base:5.+'
 }
