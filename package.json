@@ -1,13 +1,13 @@
 {
-  "name": "nativescript-intercom-bridge",
+  "name": "nativescript-intercom-bridge-latest",
   "version": "1.0.0",
-  "description": "NativeScript Plugin for Intercom",
+  "description": "Fork from NativeScript Plugin for Intercom. Updated Version",
   "main": "intercom-bridge",
   "typings": "index.d.ts",
   "nativescript": {
     "platforms": {
-      "android": "2.5.0",
-      "ios": "2.5.0"
+      "android": "5.4.0",
+      "ios": "5.4.0"
     }
   },
   "scripts": {
