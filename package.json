@@ -1,6 +1,6 @@
 {
-  "name": "nativescript-intercom-bridge-latest",
-  "version": "1.0.0",
+  "name": "nativescript-intercom-bridge-updated",
+  "version": "1.0.1",
   "description": "Fork from NativeScript Plugin for Intercom. Updated Version",
   "main": "intercom-bridge",
   "typings": "index.d.ts",
@@ -42,9 +42,9 @@
   "homepage": "https://github.com/aemr3/nativescript-intercom-bridge",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "tns-core-modules": "^2.5.1",
-    "tns-platform-declarations": "^2.5.0",
-    "typescript": "^2.1.0",
+    "tns-core-modules": "^5.4.1",
+    "tns-platform-declarations": "^5.3.0",
+    "typescript": "^3.4.5",
     "prompt": "^1.0.0",
     "rimraf": "^2.5.0"
   }
