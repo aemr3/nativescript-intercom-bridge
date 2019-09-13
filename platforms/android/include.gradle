@@ -1,12 +1,8 @@
 //default elements
 android {
-    productFlavors {
-        "nativescriptintercom" {
-            dimension "nativescriptintercom"
-        }
-    }
+    
 }
 
 dependencies {
-    compile 'io.intercom.android:intercom-sdk-base:3.+'
+    implementation 'io.intercom.android:intercom-sdk-base:5.4.0'
 }

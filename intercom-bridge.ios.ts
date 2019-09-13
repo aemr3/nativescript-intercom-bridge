@@ -33,6 +33,10 @@ export class IntercomBridge {
     Intercom.setHMACData(secureHash, secureData);
   }
 
+  static setUserHash(hmac: string) {
+    Intercom.setUserHash(hmac);
+  }
+
   static updateUser(attributes: any) {
     Intercom.updateUserWithAttributes(attributes);
   }
